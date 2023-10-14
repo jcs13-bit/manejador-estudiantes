@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EstudianteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +13,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', [EstudianteController::class, "index"])->name('estudiantes.index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/estudiantes/create', [EstudianteController::class, "create"])->name('estudiantes.create');
+
+Route::post('/estudiantes/store', [EstudianteController::class, "store"])->name('estudiantes.store');
+
+Route::get('/estudiantes/delete/{id_estudiante}', [EstudianteController::class, "delete"])->name('estudiantes.delete');
+
+
